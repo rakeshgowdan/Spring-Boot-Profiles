@@ -75,3 +75,17 @@ spring.profiles.active=stage/dev/prod
 
 For prod env, you can reserve master branch. Then all other env branches are having 1 commit ahead of master which contains the active profile change commit. Remember to rebase env branches regularly with the latest changes in master branch.
 
+## Deploy JAR with Profile
+The above setup will be working while developing the application. But in the real world, we will be deploying a JAR mostly. So, we should have a way to run the JAR with a specified env. We can use the below terminal commands for that.
+
+## Method 1: Java System Property
+```
+java -Dspring.profiles.active=stage -jar appJarName.jar
+```
+## Method 2: Environment Variable
+```
+export SPRING_PROFILES_ACTIVE=stage
+java -jar appJarName.jar
+```
+Default Profile
+Normally default profile is taken from the default configuration file. It can be application.properties OR application.yml…This is activated by default if we do not specify any active profiles
